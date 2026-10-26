@@ -2,12 +2,17 @@
   "name": "ai-mystery-room",
   "private": true,
   "version": "0.1.0",
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
     "dev": "concurrently -k -n api,web -c yellow,cyan \"npm run dev -w @mystery/api\" \"npm run dev -w @mystery/web\"",
+    "start": "npm run start -w @mystery/api",
     "dev:api": "npm run dev -w @mystery/api",
     "dev:web": "npm run dev -w @mystery/web",
     "build": "npm run build -w @mystery/shared && npm run build -w @mystery/api && npm run build -w @mystery/web",

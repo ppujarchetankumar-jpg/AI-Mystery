@@ -1,5 +1,5 @@
 import type { AccusationInput, CreateCaseInput, PublicCase, PublicResult, SafeJob } from '@mystery/shared';
-const API = import.meta.env.VITE_API_URL ?? 'http://localhost:4000/api';
+const API = import.meta.env.VITE_API_URL ?? '/api';
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${API}${path}`, { ...init, credentials: 'include', headers: { 'Content-Type': 'application/json', ...init?.headers } });
   if (!response.ok) { const payload = await response.json().catch(() => null); throw new Error(payload?.error?.message ?? `Request failed (${response.status})`); }
