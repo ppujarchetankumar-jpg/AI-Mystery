@@ -1,0 +1,31 @@
+{
+  "name": "ai-mystery-room",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c yellow,cyan \"npm run dev -w @mystery/api\" \"npm run dev -w @mystery/web\"",
+    "dev:api": "npm run dev -w @mystery/api",
+    "dev:web": "npm run dev -w @mystery/web",
+    "build": "npm run build -w @mystery/shared && npm run build -w @mystery/api && npm run build -w @mystery/web",
+    "typecheck": "npm run typecheck -w @mystery/shared && npm run typecheck -w @mystery/api && npm run typecheck -w @mystery/web",
+    "test": "npm run test -w @mystery/api && npm run test -w @mystery/web",
+    "lint": "npm run typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9"
+  },
+  "optionalDependencies": {
+    "@esbuild/win32-x64": "0.28.2"
+  },
+  "dependencies": {
+    "@babel/types": "^8.0.8",
+    "browserslist": "^4.29.4",
+    "caniuse-lite": "^1.0.30001819"
+  }
+}
